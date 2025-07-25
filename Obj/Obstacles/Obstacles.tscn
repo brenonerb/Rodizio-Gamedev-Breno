@@ -1,0 +1,150 @@
+[gd_scene load_steps=4 format=3 uid="uid://4trv2r2fad1h"]
+
+[ext_resource type="Script" uid="uid://ckhv8q1g4261q" path="res://Obj/Obstacles/ObstacleSelector.gd" id="1_u7mss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_512p2"]
+size = Vector2(40, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7mss"]
+size = Vector2(40, 80)
+
+[node name="Obstacles" type="Node2D"]
+script = ExtResource("1_u7mss")
+
+[node name="GenericObstacles" type="Node2D" parent="."]
+
+[node name="ReferenceArea" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -120.0
+offset_right = 20.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 120)
+
+[node name="SpecificObstacles" type="Node2D" parent="."]
+
+[node name="TopObstacle" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecificObstacles/TopObstacle"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_512p2")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/TopObstacle/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 60)
+color = Color(0, 0, 1, 1)
+
+[node name="BottomObstacle" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecificObstacles/BottomObstacle"]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_512p2")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/BottomObstacle/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 60)
+color = Color(0, 0, 1, 1)
+
+[node name="MiddleObstacle" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
+visible = false
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecificObstacles/MiddleObstacle"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_u7mss")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/MiddleObstacle/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 60)
+color = Color(0, 0, 1, 1)
+
+[node name="LosangoObstacle1" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecificObstacles/LosangoObstacle1"]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(-60, -60, -20, -60, 60, 61, 20, 61)
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/LosangoObstacle1/CollisionPolygon2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -62.0
+offset_right = 23.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.584685
+pivot_offset = Vector2(20, 60)
+color = Color(0, 0, 1, 1)
+
+[node name="LosangoObstacle2" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
+visible = false
+position = Vector2(0, 129)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecificObstacles/LosangoObstacle2"]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(-60, 60, -20, 60, 60, -61, 20, -61)
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/LosangoObstacle2/CollisionPolygon2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -62.0
+offset_right = 17.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.584685
+pivot_offset = Vector2(20, 60)
+color = Color(0, 0, 1, 1)

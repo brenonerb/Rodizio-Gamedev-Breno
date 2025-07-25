@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnirgiw2al6yr"]
+
+[ext_resource type="Script" uid="uid://c7pysbjd4nbm1" path="res://Levels/LevelScene.gd" id="1_iubpp"]
+[ext_resource type="PackedScene" uid="uid://ybdx0mv5uu5v" path="res://Obj/Player/PlayerObj.tscn" id="1_n2tqb"]
+[ext_resource type="PackedScene" uid="uid://4trv2r2fad1h" path="res://Obj/Obstacles/Obstacles.tscn" id="2_xepg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2tqb"]
+size = Vector2(445, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iubpp"]
+size = Vector2(445, 20)
+
+[node name="LevelScene" type="Node2D"]
+script = ExtResource("1_iubpp")
+Obstacles = ExtResource("2_xepg6")
+
+[node name="PlayerObj" parent="." instance=ExtResource("1_n2tqb")]
+position = Vector2(75, 120)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerObj"]
+position = Vector2(138, 0)
+limit_left = 0
+limit_top = 0
+limit_right = 1000000000
+limit_bottom = 240
+
+[node name="TopArea" type="Area2D" parent="." groups=["TopArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopArea"]
+position = Vector2(212.5, -10)
+shape = SubResource("RectangleShape2D_n2tqb")
+debug_color = Color(0.880751, 0.104308, 0.778064, 0.42)
+
+[node name="BottomArea" type="Area2D" parent="." groups=["BottomArea"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BottomArea"]
+position = Vector2(212.5, 250)
+shape = SubResource("RectangleShape2D_iubpp")
+debug_color = Color(0, 0.642815, 0.311205, 0.42)
+
+[node name="SpawnerArea" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -120.0
+offset_right = 20.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 120)
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 426.0
+offset_bottom = 240.0
+
+[node name="ScoreText" type="RichTextLabel" parent="GameUI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 416.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "[right]Score Aqui[/right]"

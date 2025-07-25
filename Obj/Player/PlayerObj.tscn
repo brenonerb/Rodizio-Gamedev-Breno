@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ybdx0mv5uu5v"]
+
+[ext_resource type="Script" uid="uid://dcx8dr8q8secr" path="res://Obj/Player/PlayerObj.gd" id="1_bo6ys"]
+[ext_resource type="Texture2D" uid="uid://b50epa0vnwqut" path="res://icon.svg" id="1_f80s6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo6ys"]
+size = Vector2(32, 32)
+
+[node name="PlayerObj" type="CharacterBody2D"]
+script = ExtResource("1_bo6ys")
+
+[node name="ObbligatoryCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bo6ys")
+debug_color = Color(0.988235, 0, 0, 0.419608)
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_f80s6")
+
+[node name="PlayerColiisions" type="Area2D" parent="."]
+
+[node name="PlayerCollisions" type="CollisionShape2D" parent="PlayerColiisions"]
+shape = SubResource("RectangleShape2D_bo6ys")
+debug_color = Color(0.988235, 0, 0, 0.419608)
+
+[connection signal="area_entered" from="PlayerColiisions" to="." method="_on_player_coliisions_area_entered"]
