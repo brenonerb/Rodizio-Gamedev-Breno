@@ -53,6 +53,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 120)
 
 [node name="GameUI" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 426.0
@@ -65,4 +66,26 @@ offset_top = 8.0
 offset_right = 416.0
 offset_bottom = 40.0
 bbcode_enabled = true
-text = "[right]Score Aqui[/right]"
+text = "[right]PRESSIONE ESPAÇO PARA COMEÇAR[/right]"
+
+[node name="GameOverText" type="RichTextLabel" parent="GameUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -43.0
+offset_right = 204.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][font_size=32]FIM DE JOGO"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

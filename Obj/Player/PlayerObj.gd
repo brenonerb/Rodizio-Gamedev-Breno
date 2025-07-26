@@ -1,26 +1,32 @@
 extends CharacterBody2D
 
-const YSpeed = 20.0
+const YSpeed = 7.0
 const MaxYSpeed = 200.0
 const YDeaccelerate = 5.0
 const HitSpeed = 200.0
 
 var XSpeed: float
-const TopXSpeed = 150.0
+var TopXSpeed: float
+const MaxXSpeed = 300.0
 const XAcceleration = 5.0
 var InitialBoost: bool = false
 
 func _ready() -> void:
 	XSpeed = 0.0
+	InitialBoost = false
 
-func _physics_process(delta: float) -> void:
-	if GameController.StartGame == true:
-		if InitialBoost == false:
-			XSpeed = TopXSpeed
+func _physics_process(_delta: float) -> void:
+	print(XSpeed)
+	print(InitialBoost)
+	print(GameController.SpawnablesFlag)
+	if GameController.StartGame:
+		if not InitialBoost:
 			InitialBoost = true
+			XSpeed = TopXSpeed
 		HandleMovement()
 
 func HandleMovement():
+	TopXSpeed = GameController.TopXSpeed
 	if XSpeed < TopXSpeed:
 		XSpeed += XAcceleration
 	if XSpeed >= TopXSpeed:
@@ -31,7 +37,7 @@ func HandleMovement():
 	var direction := Input.get_axis("Up", "Down")
 	if direction > 0 and velocity.y < MaxYSpeed:
 		velocity.y += YSpeed
-	if direction < 0 and velocity.y > -MaxYSpeed:
+	elif direction < 0 and velocity.y > -MaxYSpeed:
 		velocity.y -= YSpeed
 	else:
 		if velocity.y > 0:
@@ -51,8 +57,11 @@ func _on_player_coliisions_area_entered(area: Area2D) -> void:
 		XSpeed = 50.0
 
 	if area.is_in_group("Obstacle"):
-		XSpeed = -200.0
+		XSpeed = -GameController.TopXSpeed
 		GameController.SpawnablesFlag = false
 		area.queue_free()
-		if GameController.HP != 0: GameController.HP -= 1
-		else: GameController.GameOverFunc()
+		if GameController.HP != 1:
+			GameController.HP -= 1
+		else:
+			InitialBoost = false
+			GameController.GameOverFunc() 

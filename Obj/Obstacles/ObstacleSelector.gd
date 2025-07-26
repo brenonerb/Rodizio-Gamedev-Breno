@@ -21,5 +21,5 @@ func _ready() -> void:
 			$SpecificObstacles/LosangoObstacle2.visible = true
 			$SpecificObstacles/LosangoObstacle2/CollisionPolygon2D.disabled = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if position.x < get_viewport().get_camera_2d().global_position.x -256: queue_free()
