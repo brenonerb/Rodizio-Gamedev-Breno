@@ -1,14 +1,484 @@
-[gd_scene load_steps=4 format=3 uid="uid://4trv2r2fad1h"]
+[gd_scene load_steps=17 format=3 uid="uid://4trv2r2fad1h"]
 
 [ext_resource type="Script" uid="uid://ckhv8q1g4261q" path="res://Obj/Obstacles/ObstacleSelector.gd" id="1_u7mss"]
+[ext_resource type="Texture2D" uid="uid://du76kmnsqca2i" path="res://Obj/Obstacles/maderinhas.png" id="2_bafhj"]
+[ext_resource type="Texture2D" uid="uid://bb1q7xxb2hjhx" path="res://Obj/Obstacles/tijolinho.png" id="3_gniev"]
+[ext_resource type="Texture2D" uid="uid://dh8hd4l4a8ses" path="res://Obj/Obstacles/fendinha.png" id="4_7usoi"]
+[ext_resource type="Texture2D" uid="uid://i6lkfx0tltb5" path="res://Obj/Obstacles/buraquinho.png" id="4_gp55k"]
+[ext_resource type="Texture2D" uid="uid://cgjpndw4trdyh" path="res://Obj/Obstacles/murinho.png" id="5_5p0r0"]
+[ext_resource type="Texture2D" uid="uid://d1oci0adgxrm8" path="res://Obj/Obstacles/murinho2.png" id="7_yjfbi"]
+[ext_resource type="Texture2D" uid="uid://da76sby0cny40" path="res://Obj/Obstacles/fendinha2.png" id="8_6siq6"]
+[ext_resource type="Texture2D" uid="uid://bmg5l8fwcfokl" path="res://Obj/Obstacles/buraquinho2.png" id="9_cvg0n"]
+[ext_resource type="Texture2D" uid="uid://digb0i3lmpaxi" path="res://Obj/Obstacles/tijolinho2.png" id="10_nbksa"]
+[ext_resource type="Texture2D" uid="uid://h7ylb8we8cyo" path="res://Obj/Obstacles/maderinhas2.png" id="11_nr86q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_512p2"]
-size = Vector2(40, 120)
+size = Vector2(27, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7mss"]
-size = Vector2(40, 80)
+size = Vector2(15, 63)
+
+[sub_resource type="Animation" id="Animation_2to74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpecificObstacles/LosangoObstacle2/Murinho:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_5p0r0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecificObstacles/LosangoObstacle1/Fendinha:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_7usoi")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpecificObstacles/MiddleObstacle2/Buraquinho:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_gp55k")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpecificObstacles/MiddleObstacle/Tijolinho:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_gniev")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpecificObstacles/BottomObstacle/Maderinhas:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bafhj")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpecificObstacles/TopObstacle/Maderinhas:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bafhj")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpecificObstacles/LosangoObstacle2/Murinho:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpecificObstacles/LosangoObstacle1/Fendinha:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpecificObstacles/MiddleObstacle2/Buraquinho:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpecificObstacles/MiddleObstacle/Tijolinho:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SpecificObstacles/BottomObstacle/Maderinhas:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SpecificObstacles/TopObstacle/Maderinhas:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SpecificObstacles/LosangoObstacle2/Murinho:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SpecificObstacles/LosangoObstacle1/Fendinha:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SpecificObstacles/MiddleObstacle2/Buraquinho:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SpecificObstacles/MiddleObstacle/Tijolinho:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SpecificObstacles/BottomObstacle/Maderinhas:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SpecificObstacles/TopObstacle/Maderinhas:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2xw1f"]
+resource_name = "yowch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpecificObstacles/LosangoObstacle2/Murinho:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_yjfbi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecificObstacles/LosangoObstacle1/Fendinha:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_6siq6")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpecificObstacles/MiddleObstacle2/Buraquinho:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_cvg0n")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpecificObstacles/MiddleObstacle/Tijolinho:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_nbksa")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpecificObstacles/BottomObstacle/Maderinhas:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_nr86q")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpecificObstacles/TopObstacle/Maderinhas:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_nr86q")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpecificObstacles/LosangoObstacle2/Murinho:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpecificObstacles/LosangoObstacle1/Fendinha:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpecificObstacles/MiddleObstacle2/Buraquinho:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpecificObstacles/MiddleObstacle/Tijolinho:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SpecificObstacles/BottomObstacle/Maderinhas:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SpecificObstacles/TopObstacle/Maderinhas:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SpecificObstacles/LosangoObstacle2/Murinho:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SpecificObstacles/LosangoObstacle1/Fendinha:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SpecificObstacles/MiddleObstacle2/Buraquinho:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SpecificObstacles/MiddleObstacle/Tijolinho:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SpecificObstacles/BottomObstacle/Maderinhas:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SpecificObstacles/TopObstacle/Maderinhas:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmwrb"]
+_data = {
+&"RESET": SubResource("Animation_2to74"),
+&"yowch": SubResource("Animation_2xw1f")
+}
 
 [node name="Obstacles" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_u7mss")
 
 [node name="GenericObstacles" type="Node2D" parent="."]
@@ -32,97 +502,69 @@ pivot_offset = Vector2(20, 120)
 
 [node name="TopObstacle" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
 visible = false
+position = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecificObstacles/TopObstacle"]
-position = Vector2(0, -64)
+position = Vector2(-0.5, -64)
 shape = SubResource("RectangleShape2D_512p2")
 disabled = true
 
-[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/TopObstacle/CollisionShape2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -60.0
-offset_right = 20.0
-offset_bottom = 61.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 60)
-color = Color(0, 0, 1, 1)
+[node name="Maderinhas" type="Sprite2D" parent="SpecificObstacles/TopObstacle"]
+position = Vector2(0, -64)
+texture = ExtResource("2_bafhj")
 
 [node name="BottomObstacle" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
 visible = false
+position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecificObstacles/BottomObstacle"]
-position = Vector2(0, 64)
+position = Vector2(-1.5, 64)
 shape = SubResource("RectangleShape2D_512p2")
 disabled = true
 
-[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/BottomObstacle/CollisionShape2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -60.0
-offset_right = 20.0
-offset_bottom = 61.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 60)
-color = Color(0, 0, 1, 1)
+[node name="Maderinhas" type="Sprite2D" parent="SpecificObstacles/BottomObstacle"]
+position = Vector2(-1, 65)
+texture = ExtResource("2_bafhj")
 
 [node name="MiddleObstacle" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
 visible = false
+z_index = 2
 position = Vector2(0, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecificObstacles/MiddleObstacle"]
-position = Vector2(0, -64)
+position = Vector2(2.5, -59.5)
 shape = SubResource("RectangleShape2D_u7mss")
 disabled = true
 
-[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/MiddleObstacle/CollisionShape2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 60)
-color = Color(0, 0, 1, 1)
+[node name="Tijolinho" type="Sprite2D" parent="SpecificObstacles/MiddleObstacle"]
+position = Vector2(16, -69)
+texture = ExtResource("3_gniev")
+
+[node name="MiddleObstacle2" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
+visible = false
+position = Vector2(0, 72)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecificObstacles/MiddleObstacle2"]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(-7, -42, -32, -37, -54, -27, -66, -18, -72, -7, -73, 0, -70, 9, -58, 20, -35, 28, 0, 31, 35, 26, 57, 17, 71, 4, 75, -8, 71, -19, 58, -30, 37, -39, 15, -43)
+disabled = true
+
+[node name="Buraquinho" type="Sprite2D" parent="SpecificObstacles/MiddleObstacle2"]
+position = Vector2(0, -64)
+texture = ExtResource("4_gp55k")
 
 [node name="LosangoObstacle1" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
 visible = false
+position = Vector2(0, 3)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecificObstacles/LosangoObstacle1"]
 position = Vector2(0, -64)
-polygon = PackedVector2Array(-60, -60, -20, -60, 60, 61, 20, 61)
+polygon = PackedVector2Array(-28, -56, -3, -56, 22, -25, 37, 7, 39, 20, 33, 26, 19, 26, 20, 45, 13, 64, 7, 39, -6, 15, 13, 15, -6, -24)
 disabled = true
 
-[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/LosangoObstacle1/CollisionPolygon2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -17.0
-offset_top = -62.0
-offset_right = 23.0
-offset_bottom = 59.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.584685
-pivot_offset = Vector2(20, 60)
-color = Color(0, 0, 1, 1)
+[node name="Fendinha" type="Sprite2D" parent="SpecificObstacles/LosangoObstacle1"]
+position = Vector2(8, -56)
+texture = ExtResource("4_7usoi")
 
 [node name="LosangoObstacle2" type="Area2D" parent="SpecificObstacles" groups=["Obstacle"]]
 visible = false
@@ -130,21 +572,14 @@ position = Vector2(0, 129)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpecificObstacles/LosangoObstacle2"]
 position = Vector2(0, -64)
-polygon = PackedVector2Array(-60, 60, -20, 60, 60, -61, 20, -61)
+polygon = PackedVector2Array(-29, 21, -27, 35, 26, -47, 25, -61)
 disabled = true
 
-[node name="ColorRect" type="ColorRect" parent="SpecificObstacles/LosangoObstacle2/CollisionPolygon2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -62.0
-offset_right = 17.0
-offset_bottom = 59.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.584685
-pivot_offset = Vector2(20, 60)
-color = Color(0, 0, 1, 1)
+[node name="Murinho" type="Sprite2D" parent="SpecificObstacles/LosangoObstacle2"]
+position = Vector2(0, -76)
+texture = ExtResource("5_5p0r0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wmwrb")
+}

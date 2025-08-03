@@ -11,19 +11,39 @@ const MaxXSpeed = 300.0
 const XAcceleration = 5.0
 var InitialBoost: bool = false
 
+@onready var pernas := $Rolima/Pernas
+@onready var corpo := $Rolima/Corpo
+@onready var sombra_pernas := $Sombra/Pernas
+@onready var sombra_corpo := $Sombra/Corpo
+# Essas variáveis são alteradas no AnimationPlayer
+# Serve para fazer a animação do carrinho descendo
+# sem ele colidir com as bordas do nível
+@export var invencivel := false
+@export var spawnando := false
+const MORTO = preload("res://Obj/Morto/morto.tscn")
+const MARQUINHA = preload("res://Obj/MarcasDePneu/marca_de_pneu.tscn")
+@onready var perna_esquerda := $Rolima/Pernas/RodaEsquerda
+@onready var perna_direita := $Rolima/Pernas/RodaDireita
+@onready var level := get_parent()
+var prev_perna_rot := 0.0
+
+signal yowch(shake_amount: int)
+signal recuperou
+
 func _ready() -> void:
 	XSpeed = 0.0
 	InitialBoost = false
+	GameController.game_started.connect(func():
+			$AnimationPlayer.play("spawn")
+	)
 
 func _physics_process(_delta: float) -> void:
-	print(XSpeed)
-	print(InitialBoost)
-	print(GameController.SpawnablesFlag)
 	if GameController.StartGame:
 		if not InitialBoost:
 			InitialBoost = true
 			XSpeed = TopXSpeed
 		HandleMovement()
+		handle_marquinhas()
 
 func HandleMovement():
 	TopXSpeed = GameController.TopXSpeed
@@ -31,10 +51,9 @@ func HandleMovement():
 		XSpeed += XAcceleration
 	if XSpeed >= TopXSpeed:
 		XSpeed = TopXSpeed
-		GameController.SpawnablesFlag = true
-		
+
 	velocity.x = XSpeed
-	var direction := Input.get_axis("Up", "Down")
+	var direction := Input.get_axis("Up", "Down") if not spawnando else 0.0
 	if direction > 0 and velocity.y < MaxYSpeed:
 		velocity.y += YSpeed
 	elif direction < 0 and velocity.y > -MaxYSpeed:
@@ -46,22 +65,51 @@ func HandleMovement():
 			velocity.y += YDeaccelerate
 	move_and_slide()
 
+	pernas.rotation_degrees = velocity.y / 4.0
+	corpo.rotation_degrees = lerp(corpo.rotation_degrees, velocity.y / 4.0, 0.05)
+	sombra_pernas.rotation = pernas.rotation
+	sombra_corpo.rotation = corpo.rotation
+
+func handle_marquinhas():
+	if abs(prev_perna_rot - pernas.global_rotation) > 0.03:
+		var marca = MARQUINHA.instantiate()
+		marca.global_position = perna_esquerda.global_position
+		marca.global_rotation = perna_esquerda.global_rotation
+		level.add_child(marca)
+		marca = MARQUINHA.instantiate()
+		marca.global_position = perna_direita.global_position
+		marca.global_rotation = perna_direita.global_rotation
+		level.add_child(marca)
+	prev_perna_rot = pernas.global_rotation
+
 
 func _on_player_coliisions_area_entered(area: Area2D) -> void:
-	if area.is_in_group("TopArea"):
+	if area.is_in_group("TopArea") and not spawnando:
 		velocity.y = HitSpeed
 		XSpeed = 50.0
 
-	if area.is_in_group("BottomArea"):
+	if area.is_in_group("BottomArea") and not spawnando:
 		velocity.y = -HitSpeed
 		XSpeed = 50.0
 
-	if area.is_in_group("Obstacle"):
+	if area.is_in_group("Obstacle") and not invencivel:
 		XSpeed = -GameController.TopXSpeed
-		GameController.SpawnablesFlag = false
-		area.queue_free()
+		area.get_parent().get_parent().yowch()
 		if GameController.HP != 1:
+			yowch.emit(50)
+			$AnimationPlayer.stop()
+			$AnimationPlayer.play("speen")
 			GameController.HP -= 1
 		else:
+			yowch.emit(100)
 			InitialBoost = false
-			GameController.GameOverFunc() 
+			GameController.GameOverFunc()
+			$AnimationPlayer.play("RESET")
+			var morto = MORTO.instantiate()
+			morto.global_position = global_position
+			get_parent().add_child(morto)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "speen":
+		recuperou.emit()

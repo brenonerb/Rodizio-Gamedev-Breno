@@ -12,6 +12,8 @@ var GameTime: float
 var TopXSpeed: float
 var SpawnTime: float
 
+signal game_started
+
 func _process(delta: float) -> void:
 	if StartGame:
 		if not StartScore:
@@ -33,6 +35,7 @@ func StartGameFunc():
 	TopXSpeed = 100.0
 	SpawnTime = 3.0
 	GameTime = 0
+	game_started.emit()
 	print("Jogo começou")
 
 func GameOverFunc():

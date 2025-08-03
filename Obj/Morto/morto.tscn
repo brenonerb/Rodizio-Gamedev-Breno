@@ -1,0 +1,209 @@
+[gd_scene load_steps=17 format=3 uid="uid://bggvrro00afk3"]
+
+[ext_resource type="Texture2D" uid="uid://dfxnwmbhqgqey" path="res://Obj/Morto/morto.png" id="1_2cm5y"]
+[ext_resource type="Script" uid="uid://c1t7pxa5cjber" path="res://Obj/Morto/morto.gd" id="1_5vtsv"]
+[ext_resource type="Texture2D" uid="uid://dagvy6ry2ebp5" path="res://Obj/Morto/explosao0000.png" id="2_7p84n"]
+[ext_resource type="Texture2D" uid="uid://cowdeo7dpwjqv" path="res://Obj/Morto/explosao0001.png" id="3_o74gb"]
+[ext_resource type="Texture2D" uid="uid://dldpok2x6kmu5" path="res://Obj/Morto/explosao0002.png" id="4_knckh"]
+[ext_resource type="Texture2D" uid="uid://dg5s2fg32raya" path="res://Obj/Morto/explosao0003.png" id="5_5vtsv"]
+[ext_resource type="Texture2D" uid="uid://chyuveaydjuq2" path="res://Obj/Morto/explosao0004.png" id="6_5in0j"]
+[ext_resource type="Texture2D" uid="uid://b61cfe16l2oob" path="res://Obj/Morto/fumaca1.png" id="7_7p84n"]
+[ext_resource type="Texture2D" uid="uid://cwgvxc0jtgeij" path="res://Obj/Morto/fumaca2.png" id="8_knckh"]
+[ext_resource type="Texture2D" uid="uid://di3jbaknxdiu5" path="res://Obj/Morto/fumaca3.png" id="9_5vtsv"]
+
+[sub_resource type="Animation" id="Animation_dkpx4"]
+resource_name = "go"
+length = 0.416671
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosao:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_7p84n"), ExtResource("3_o74gb"), ExtResource("4_knckh"), ExtResource("5_5vtsv"), ExtResource("6_5in0j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosao:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.416667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morto:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, 2), Vector2(8, -5), Vector2(-8, -4), Vector2(4, 4), Vector2(0, -4), Vector2(-5, 1), Vector2(2, -2), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morto:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c5x0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosao:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7p84n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosao:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morto:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morto:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_646d1"]
+_data = {
+&"RESET": SubResource("Animation_c5x0a"),
+&"go": SubResource("Animation_dkpx4")
+}
+
+[sub_resource type="Curve" id="Curve_7p84n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.314607), -2.11493, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_o74gb"]
+offsets = PackedFloat32Array(0, 0.183486, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_7p84n"]
+colors = PackedColorArray(1, 1, 1, 0.352941, 1, 1, 1, 1)
+
+[node name="Morto" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_5vtsv")
+
+[node name="Morto" type="Sprite2D" parent="."]
+texture = ExtResource("1_2cm5y")
+
+[node name="Explosao" type="Sprite2D" parent="."]
+position = Vector2(-4, -10)
+texture = ExtResource("2_7p84n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_646d1")
+}
+autoplay = "go"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -3)
+emitting = false
+texture = ExtResource("7_7p84n")
+lifetime = 2.5
+one_shot = true
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, -50)
+initial_velocity_min = 2.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.75
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_7p84n")
+color_ramp = SubResource("Gradient_o74gb")
+color_initial_ramp = SubResource("Gradient_7p84n")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(0, -3)
+emitting = false
+amount = 12
+texture = ExtResource("8_knckh")
+lifetime = 3.0
+one_shot = true
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, -50)
+initial_velocity_min = 2.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.75
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_7p84n")
+color_ramp = SubResource("Gradient_o74gb")
+color_initial_ramp = SubResource("Gradient_7p84n")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2(0, -3)
+emitting = false
+amount = 24
+texture = ExtResource("9_5vtsv")
+lifetime = 4.0
+one_shot = true
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, -50)
+initial_velocity_min = 2.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.75
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_7p84n")
+color_ramp = SubResource("Gradient_o74gb")
+color_initial_ramp = SubResource("Gradient_7p84n")

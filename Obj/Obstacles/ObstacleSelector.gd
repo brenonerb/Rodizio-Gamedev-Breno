@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var ObstacleType = randi_range(0, 4)
+	var ObstacleType = randi_range(0, 5)
 	match ObstacleType:
 		0:
 			$SpecificObstacles/TopObstacle.visible = true
@@ -20,6 +20,12 @@ func _ready() -> void:
 		4:
 			$SpecificObstacles/LosangoObstacle2.visible = true
 			$SpecificObstacles/LosangoObstacle2/CollisionPolygon2D.disabled = false
+		5:
+			$SpecificObstacles/MiddleObstacle2.visible = true
+			$SpecificObstacles/MiddleObstacle2/CollisionPolygon2D.disabled = false
 
 func _process(_delta: float) -> void:
-	if position.x < get_viewport().get_camera_2d().global_position.x -256: queue_free()
+	if position.x < get_viewport().get_camera_2d().global_position.x -350: queue_free()
+
+func yowch():
+	$AnimationPlayer.play("yowch")

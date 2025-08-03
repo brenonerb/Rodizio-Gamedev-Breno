@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://7ratloqryb67"]
+
+[ext_resource type="Texture2D" uid="uid://bbgu1n14jai4p" path="res://Obj/MarcasDePneu/pneuzinho.png" id="1_f1u36"]
+
+[sub_resource type="Animation" id="Animation_f1u36"]
+resource_name = "go"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cmqyg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyc04"]
+_data = {
+&"RESET": SubResource("Animation_cmqyg"),
+&"go": SubResource("Animation_f1u36")
+}
+
+[node name="MarcaDePneu" type="Sprite2D"]
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_f1u36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hyc04")
+}
+autoplay = "go"

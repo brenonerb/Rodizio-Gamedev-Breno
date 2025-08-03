@@ -1,8 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnirgiw2al6yr"]
+[gd_scene load_steps=32 format=3 uid="uid://cnirgiw2al6yr"]
 
 [ext_resource type="Script" uid="uid://c7pysbjd4nbm1" path="res://Levels/LevelScene.gd" id="1_iubpp"]
 [ext_resource type="PackedScene" uid="uid://ybdx0mv5uu5v" path="res://Obj/Player/PlayerObj.tscn" id="1_n2tqb"]
 [ext_resource type="PackedScene" uid="uid://4trv2r2fad1h" path="res://Obj/Obstacles/Obstacles.tscn" id="2_xepg6"]
+[ext_resource type="Script" uid="uid://dhpijv24suyhv" path="res://Obj/Background/Background.gd" id="3_k5tjo"]
+[ext_resource type="Texture2D" uid="uid://dluynmp03bb54" path="res://Obj/Background/fundo.png" id="3_wnflf"]
+[ext_resource type="Texture2D" uid="uid://bdw3n3lwr1cv7" path="res://Obj/Background/florzinho.png" id="5_mnn26"]
+[ext_resource type="Script" uid="uid://c7hqm7hl16qxx" path="res://Obj/camera_2d.gd" id="6_a1kug"]
+[ext_resource type="Texture2D" uid="uid://b0yeql1f1a42c" path="res://Obj/Background/marquinhas1.png" id="6_rtyav"]
+[ext_resource type="Texture2D" uid="uid://brlqaaa8kcxdj" path="res://Obj/Background/matinho1.png" id="7_wew2g"]
+[ext_resource type="Texture2D" uid="uid://8hq54ycjvvux" path="res://Obj/Background/matinho2.png" id="8_pqekq"]
+[ext_resource type="Texture2D" uid="uid://dckbjbte8cgqe" path="res://Obj/Background/pedrinhas1.png" id="9_6x2tf"]
+[ext_resource type="Texture2D" uid="uid://bif0mydwcg3rn" path="res://Obj/Background/risquinhos.png" id="10_n1166"]
+[ext_resource type="Texture2D" uid="uid://6ogrhmgklr1b" path="res://Obj/Background/marquinhas2.png" id="11_58y8y"]
+[ext_resource type="Texture2D" uid="uid://bd51ymtsnq2y8" path="res://Obj/Background/marquinhas3.png" id="12_otolq"]
+[ext_resource type="Texture2D" uid="uid://b17tkwmr6uyx1" path="res://Obj/logo.png" id="15_pqekq"]
+[ext_resource type="Texture2D" uid="uid://cjjnjavwfa813" path="res://Obj/vignette.png" id="15_rtyav"]
+[ext_resource type="Texture2D" uid="uid://c8w3fmpcohtmj" path="res://Obj/espaco.png" id="16_6x2tf"]
+[ext_resource type="FontFile" uid="uid://tc7sga5wvv37" path="res://thick_8x8.png" id="17_n1166"]
+[ext_resource type="Texture2D" uid="uid://depjb8q13qphp" path="res://Obj/coroinha.png" id="18_58y8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5tjo"]
+size = Vector2(26, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2tqb"]
 size = Vector2(445, 20)
@@ -10,12 +29,280 @@ size = Vector2(445, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iubpp"]
 size = Vector2(445, 20)
 
+[sub_resource type="LabelSettings" id="LabelSettings_n1166"]
+font = ExtResource("17_n1166")
+font_size = 8
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_otolq"]
+font = ExtResource("17_n1166")
+font_size = 8
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_n1166"]
+resource_name = "in"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Espaco:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1.3),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(207, 250), Vector2(207, 176)]
+}
+
+[sub_resource type="Animation" id="Animation_58y8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Espaco:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(207, 176)]
+}
+
+[sub_resource type="Animation" id="Animation_otolq"]
+resource_name = "out"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Espaco:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.2, 0.2),
+"update": 0,
+"values": [Vector2(207, 176), Vector2(207, 250)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otolq"]
+_data = {
+&"RESET": SubResource("Animation_58y8y"),
+&"in": SubResource("Animation_n1166"),
+&"out": SubResource("Animation_otolq")
+}
+
+[sub_resource type="Animation" id="Animation_a1kug"]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.235294), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dxuuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugwhw"]
+_data = {
+&"RESET": SubResource("Animation_dxuuj"),
+&"flash": SubResource("Animation_a1kug")
+}
+
 [node name="LevelScene" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_iubpp")
 Obstacles = ExtResource("2_xepg6")
 
+[node name="Fundo" type="Node2D" parent="."]
+z_index = -3
+position = Vector2(213, 120)
+script = ExtResource("3_k5tjo")
+
+[node name="Sprite1" type="Sprite2D" parent="Fundo"]
+texture = ExtResource("3_wnflf")
+
+[node name="Decors" type="Node2D" parent="Fundo/Sprite1"]
+
+[node name="Decor1" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(-44, -57)
+texture = ExtResource("5_mnn26")
+
+[node name="Decor2" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(157, 75)
+texture = ExtResource("6_rtyav")
+
+[node name="Decor3" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(-178, 69)
+texture = ExtResource("7_wew2g")
+
+[node name="Decor4" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(-100, 48)
+texture = ExtResource("8_pqekq")
+
+[node name="Decor5" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(152, -60)
+texture = ExtResource("9_6x2tf")
+
+[node name="Decor6" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(51, 71)
+texture = ExtResource("10_n1166")
+
+[node name="Decor7" type="Sprite2D" parent="Fundo/Sprite1/Decors"]
+position = Vector2(84, 34)
+texture = ExtResource("5_mnn26")
+
+[node name="Sprite2" type="Sprite2D" parent="Fundo"]
+position = Vector2(426, 0)
+texture = ExtResource("3_wnflf")
+
+[node name="Decors" type="Node2D" parent="Fundo/Sprite2"]
+
+[node name="Decor1" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(-60, -79)
+texture = ExtResource("11_58y8y")
+
+[node name="Decor2" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(157, 75)
+texture = ExtResource("9_6x2tf")
+
+[node name="Decor3" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(70, -50)
+texture = ExtResource("7_wew2g")
+
+[node name="Decor4" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(-143, -38)
+texture = ExtResource("8_pqekq")
+
+[node name="Decor5" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(-152, 72)
+texture = ExtResource("9_6x2tf")
+
+[node name="Decor6" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(-49, 48)
+texture = ExtResource("10_n1166")
+
+[node name="Decor7" type="Sprite2D" parent="Fundo/Sprite2/Decors"]
+position = Vector2(32, 20)
+texture = ExtResource("12_otolq")
+
+[node name="Sprite3" type="Sprite2D" parent="Fundo"]
+position = Vector2(852, 0)
+texture = ExtResource("3_wnflf")
+
+[node name="Decors" type="Node2D" parent="Fundo/Sprite3"]
+
+[node name="Decor1" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(-103, -81)
+texture = ExtResource("5_mnn26")
+
+[node name="Decor2" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(-147, 11)
+texture = ExtResource("6_rtyav")
+
+[node name="Decor3" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(17, 73)
+texture = ExtResource("7_wew2g")
+
+[node name="Decor4" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(32, -30)
+texture = ExtResource("8_pqekq")
+
+[node name="Decor5" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(130, -87)
+texture = ExtResource("9_6x2tf")
+
+[node name="Decor6" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(-89, 22)
+texture = ExtResource("10_n1166")
+
+[node name="Decor7" type="Sprite2D" parent="Fundo/Sprite3/Decors"]
+position = Vector2(175, 48)
+texture = ExtResource("7_wew2g")
+
+[node name="Limite" type="Area2D" parent="Fundo"]
+position = Vector2(639, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fundo/Limite"]
+shape = SubResource("RectangleShape2D_k5tjo")
+
+[node name="ColorRect" type="ColorRect" parent="Fundo"]
+offset_left = -213.0
+offset_top = -298.0
+offset_right = 1065.0
+offset_bottom = -120.0
+color = Color(0.34902, 0.552941, 0.0745098, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Fundo"]
+offset_left = -213.0
+offset_top = 120.0
+offset_right = 1065.0
+offset_bottom = 298.0
+color = Color(0.34902, 0.552941, 0.0745098, 1)
+
 [node name="PlayerObj" parent="." instance=ExtResource("1_n2tqb")]
-position = Vector2(75, 120)
+z_index = 1
+position = Vector2(75, 120.1)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerObj"]
 position = Vector2(138, 0)
@@ -23,6 +310,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 1000000000
 limit_bottom = 240
+script = ExtResource("6_a1kug")
 
 [node name="TopArea" type="Area2D" parent="." groups=["TopArea"]]
 
@@ -52,40 +340,114 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 120)
 
-[node name="GameUI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" type="Control" parent="CanvasLayer"]
 z_index = 10
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 426.0
 offset_bottom = 240.0
 
-[node name="ScoreText" type="RichTextLabel" parent="GameUI"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 416.0
-offset_bottom = 40.0
-bbcode_enabled = true
-text = "[right]PRESSIONE ESPAÇO PARA COMEÇAR[/right]"
-
-[node name="GameOverText" type="RichTextLabel" parent="GameUI"]
-visible = false
+[node name="Logo" type="TextureRect" parent="CanvasLayer/GameUI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -43.0
-offset_right = 204.0
-offset_bottom = 43.0
+offset_left = -241.0
+offset_top = -88.0
+offset_right = -40.0
+offset_bottom = 44.0
+pivot_offset = Vector2(95, 66)
+texture = ExtResource("15_pqekq")
+
+[node name="Espaco" type="TextureRect" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = 56.0
+offset_right = -57.0
+offset_bottom = 82.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("16_6x2tf")
+
+[node name="Record" type="Label" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -47.0
+offset_top = 27.0
+offset_right = -15.0
+offset_bottom = 35.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_n1166")
+horizontal_alignment = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -47.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_otolq")
+horizontal_alignment = 2
+
+[node name="Coroinha" type="TextureRect" parent="CanvasLayer/GameUI"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 25.0
+offset_right = 422.0
+offset_bottom = 36.0
+texture = ExtResource("18_58y8y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_otolq")
+}
+autoplay = "in"
+
+[node name="Flash" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-bbcode_enabled = true
-text = "[center][font_size=32]FIM DE JOGO"
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Flash"]
+libraries = {
+&"": SubResource("AnimationLibrary_ugwhw")
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("15_rtyav")
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
+[connection signal="area_entered" from="Fundo/Limite" to="Fundo" method="_on_limite_area_entered"]
+[connection signal="recuperou" from="PlayerObj" to="." method="_on_player_obj_recuperou"]
+[connection signal="yowch" from="PlayerObj" to="." method="_on_player_obj_yowch"]
+[connection signal="yowch" from="PlayerObj" to="PlayerObj/Camera2D" method="_on_player_obj_yowch"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
