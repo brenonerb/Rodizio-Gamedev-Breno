@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ybdx0mv5uu5v"]
+[gd_scene load_steps=27 format=3 uid="uid://ybdx0mv5uu5v"]
 
 [ext_resource type="Script" uid="uid://dcx8dr8q8secr" path="res://Obj/Player/PlayerObj.gd" id="1_bo6ys"]
 [ext_resource type="Texture2D" uid="uid://cgagakq3s0dqq" path="res://Obj/Player/sombra_corpo.png" id="2_4h87w"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://biicgssf88ql3" path="res://SFX/bounce.wav" id="10_a6gpj"]
 [ext_resource type="AudioStream" uid="uid://cnoikc3s66f7f" path="res://SFX/100points.wav" id="11_88kkg"]
 [ext_resource type="AudioStream" uid="uid://d1pwsmdfu587a" path="res://SFX/skid.wav" id="12_xww8w"]
+[ext_resource type="AudioStream" uid="uid://u7lvnlqn3kib" path="res://SFX/motor.wav" id="13_l3e0x"]
 
 [sub_resource type="Curve" id="Curve_xww8w"]
 _data = [Vector2(0.597458, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.258427), 0.0, 0.0, 0, 0]
@@ -20,6 +21,16 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_l3e0x"]
 _data = [Vector2(0, 0.483146), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_boepf"]
+_limits = [0.0, 0.123596, 0.0, 1.0]
+_data = [Vector2(0, 0.0361066), 0.0, 0.0, 0, 0, Vector2(0.49345, 0.0555486), 0.0, 0.0, 0, 0, Vector2(1, 0.0749906), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_sla56"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.480349, 0.696629), -0.135423, -0.135423, 0, 0, Vector2(1, 1.4382), -0.779707, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo6ys"]
 size = Vector2(32, 12)
@@ -376,6 +387,8 @@ invencivel = true
 spawnando = true
 skid_volume_curve = SubResource("Curve_xww8w")
 skid_pitch_curve = SubResource("Curve_l3e0x")
+motor_volume_curve = SubResource("Curve_boepf")
+motor_pitch_curve = SubResource("Curve_sla56")
 
 [node name="ObbligatoryCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bo6ys")
@@ -455,6 +468,11 @@ bus = &"CarSounds"
 
 [node name="Skid" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_xww8w")
+autoplay = true
+bus = &"CarSounds"
+
+[node name="Motor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_l3e0x")
 autoplay = true
 bus = &"CarSounds"
 

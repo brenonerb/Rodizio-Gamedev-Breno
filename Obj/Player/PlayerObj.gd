@@ -29,11 +29,15 @@ var prev_perna_rot := 0.0
 @export var skid_volume_curve: Curve
 @export var skid_pitch_curve: Curve
 
+@export var motor_volume_curve: Curve
+@export var motor_pitch_curve: Curve
+
 signal yowch(shake_amount: int)
 signal recuperou
 
 func _ready() -> void:
 	$Skid.volume_linear = 0.0
+	$Motor.volume_linear = 0.0
 	XSpeed = 0.0
 	InitialBoost = false
 	GameController.game_started.connect(func():
@@ -49,6 +53,9 @@ func _physics_process(_delta: float) -> void:
 		HandleMovement()
 		$Skid.volume_linear = skid_volume_curve.sample(abs(prev_perna_rot))
 		$Skid.pitch_scale = skid_pitch_curve.sample(abs(prev_perna_rot))
+		
+		$Motor.volume_linear = motor_volume_curve.sample(XSpeed / MaxXSpeed if XSpeed > 0 else 0)
+		$Motor.pitch_scale = motor_pitch_curve.sample(XSpeed / MaxXSpeed if XSpeed > 0 else 0)
 		handle_marquinhas()
 
 func HandleMovement():
@@ -108,8 +115,8 @@ func _on_player_coliisions_area_entered(area: Area2D) -> void:
 			$AnimationPlayer.stop()
 			$AnimationPlayer.play("speen")
 			GameController.HP -= 1
-			$HitSound.play()
-		else:
+			$HitSound.play() 
+		else: 
 			yowch.emit(100)
 			InitialBoost = false
 			GameController.GameOverFunc()
@@ -119,6 +126,7 @@ func _on_player_coliisions_area_entered(area: Area2D) -> void:
 			get_parent().add_child(morto)
 			$DeadSound.play()
 			$Skid.volume_linear = 0.0
+			$Motor.volume_linear = 0.0
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
