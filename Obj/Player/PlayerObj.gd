@@ -27,6 +27,7 @@ const MARQUINHA = preload("res://Obj/MarcasDePneu/marca_de_pneu.tscn")
 @onready var level := get_parent()
 var prev_perna_rot := 0.0
 @export var skid_volume_curve: Curve
+@export var skid_pitch_curve: Curve
 
 signal yowch(shake_amount: int)
 signal recuperou
@@ -47,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 			XSpeed = TopXSpeed
 		HandleMovement()
 		$Skid.volume_linear = skid_volume_curve.sample(abs(prev_perna_rot))
-		$Skid.pitch_scale = 0.5 + skid_volume_curve.sample(abs(prev_perna_rot))
+		$Skid.pitch_scale = skid_pitch_curve.sample(abs(prev_perna_rot))
 		handle_marquinhas()
 
 func HandleMovement():
