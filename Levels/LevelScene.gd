@@ -29,6 +29,7 @@ func _process(_delta: float) -> void:
 		$CanvasLayer/GameUI/AnimationPlayer.play("out")
 
 	if GameController.StartGame:
+		get_tree().create_tween().tween_property($Music, "pitch_scale", 1.0, 0.5)
 		ScoreText.text = str(GameController.Score)
 		if GameController.Score > current_record:
 			new_record = true
@@ -56,10 +57,12 @@ func SpawnObstacle():
 
 func ShowGameOver():
 	$Timer.stop()
+	get_tree().create_tween().tween_property($Music, "pitch_scale", 0.3, 0.5)
 	$CanvasLayer/GameUI/AnimationPlayer.play("in")
 	if new_record:
 		$CanvasLayer/GameUI/Coroinha.modulate = Color.YELLOW
 		$CanvasLayer/GameUI/Record.modulate = Color.YELLOW
+		$Highscore.play()
 	SpawnerReady = false
 
 

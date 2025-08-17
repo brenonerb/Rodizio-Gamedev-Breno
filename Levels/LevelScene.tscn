@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnirgiw2al6yr"]
+[gd_scene load_steps=34 format=3 uid="uid://cnirgiw2al6yr"]
 
 [ext_resource type="Script" uid="uid://c7pysbjd4nbm1" path="res://Levels/LevelScene.gd" id="1_iubpp"]
 [ext_resource type="PackedScene" uid="uid://ybdx0mv5uu5v" path="res://Obj/Player/PlayerObj.tscn" id="1_n2tqb"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://c8w3fmpcohtmj" path="res://Obj/espaco.png" id="16_6x2tf"]
 [ext_resource type="FontFile" uid="uid://tc7sga5wvv37" path="res://thick_8x8.png" id="17_n1166"]
 [ext_resource type="Texture2D" uid="uid://depjb8q13qphp" path="res://Obj/coroinha.png" id="18_58y8y"]
+[ext_resource type="AudioStream" uid="uid://dp8ajmeep8lm5" path="res://DownhillRolimã.wav" id="20_58y8y"]
+[ext_resource type="AudioStream" uid="uid://cg5sbcxsgpblk" path="res://SFX/highscore.wav" id="21_otolq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5tjo"]
 size = Vector2(26, 256)
@@ -40,6 +42,33 @@ font = ExtResource("17_n1166")
 font_size = 8
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_58y8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Espaco:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(207, 176)]
+}
 
 [sub_resource type="Animation" id="Animation_n1166"]
 resource_name = "in"
@@ -68,33 +97,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
 "values": [Vector2(207, 250), Vector2(207, 176)]
-}
-
-[sub_resource type="Animation" id="Animation_58y8y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Logo:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Espaco:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(207, 176)]
 }
 
 [sub_resource type="Animation" id="Animation_otolq"]
@@ -132,6 +134,21 @@ _data = {
 &"out": SubResource("Animation_otolq")
 }
 
+[sub_resource type="Animation" id="Animation_dxuuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_a1kug"]
 resource_name = "flash"
 length = 0.2
@@ -146,21 +163,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 0, 0, 0.235294), Color(1, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_dxuuj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ugwhw"]
@@ -385,9 +387,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -47.0
-offset_top = 27.0
+offset_top = 24.0
 offset_right = -15.0
-offset_bottom = 35.0
+offset_bottom = 32.0
 grow_horizontal = 0
 text = "0"
 label_settings = SubResource("LabelSettings_n1166")
@@ -410,9 +412,9 @@ horizontal_alignment = 2
 [node name="Coroinha" type="TextureRect" parent="CanvasLayer/GameUI"]
 layout_mode = 0
 offset_left = 412.0
-offset_top = 25.0
+offset_top = 22.0
 offset_right = 422.0
-offset_bottom = 36.0
+offset_bottom = 33.0
 texture = ExtResource("18_58y8y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI"]
@@ -445,6 +447,14 @@ metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_58y8y")
+volume_db = -8.0
+autoplay = true
+
+[node name="Highscore" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_otolq")
 
 [connection signal="area_entered" from="Fundo/Limite" to="Fundo" method="_on_limite_area_entered"]
 [connection signal="recuperou" from="PlayerObj" to="." method="_on_player_obj_recuperou"]

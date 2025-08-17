@@ -13,6 +13,7 @@ var TopXSpeed: float
 var SpawnTime: float
 
 signal game_started
+signal hundred_points
 
 func _process(delta: float) -> void:
 	if StartGame:
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 func AddToScore():
 	while StartGame:
 		Score += 1
+		if (Score % 100 == 0):
+			hundred_points.emit()
 		await get_tree().create_timer(0.1).timeout
 
 func StartGameFunc():

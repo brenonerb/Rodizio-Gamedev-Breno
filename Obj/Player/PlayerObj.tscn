@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ybdx0mv5uu5v"]
+[gd_scene load_steps=23 format=3 uid="uid://ybdx0mv5uu5v"]
 
 [ext_resource type="Script" uid="uid://dcx8dr8q8secr" path="res://Obj/Player/PlayerObj.gd" id="1_bo6ys"]
 [ext_resource type="Texture2D" uid="uid://cgagakq3s0dqq" path="res://Obj/Player/sombra_corpo.png" id="2_4h87w"]
@@ -7,6 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://d1y7h0gly7esu" path="res://Obj/Player/sombra_pernas.png" id="3_jdiyw"]
 [ext_resource type="Texture2D" uid="uid://cu4e80tb2hy2d" path="res://Obj/Player/pernas1.png" id="4_xeh6e"]
 [ext_resource type="Texture2D" uid="uid://dywmo0vv6y5m4" path="res://Obj/Player/pernas2.png" id="5_037n0"]
+[ext_resource type="AudioStream" uid="uid://dkdhbws2os333" path="res://SFX/hit.wav" id="8_ov0px"]
+[ext_resource type="AudioStream" uid="uid://12cudhwydtix" path="res://SFX/dead.wav" id="9_a6gpj"]
+[ext_resource type="AudioStream" uid="uid://biicgssf88ql3" path="res://SFX/bounce.wav" id="10_a6gpj"]
+[ext_resource type="AudioStream" uid="uid://cnoikc3s66f7f" path="res://SFX/100points.wav" id="11_88kkg"]
+[ext_resource type="AudioStream" uid="uid://d1pwsmdfu587a" path="res://SFX/skid.wav" id="12_xww8w"]
+
+[sub_resource type="Curve" id="Curve_xww8w"]
+_data = [Vector2(0.597458, 0), 0.0, 0.0, 0, 0, Vector2(0.995763, 0.730337), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo6ys"]
 size = Vector2(32, 12)
@@ -361,6 +370,7 @@ texture_filter = 1
 script = ExtResource("1_bo6ys")
 invencivel = true
 spawnando = true
+skid_volume_curve = SubResource("Curve_xww8w")
 
 [node name="ObbligatoryCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bo6ys")
@@ -417,6 +427,26 @@ root_node = NodePath("../Rolima")
 libraries = {
 &"": SubResource("AnimationLibrary_ov0px")
 }
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ov0px")
+volume_db = 4.0
+
+[node name="DeadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_a6gpj")
+volume_db = 4.0
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_a6gpj")
+volume_db = 4.0
+
+[node name="100Points" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_88kkg")
+volume_db = -8.0
+
+[node name="Skid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_xww8w")
+autoplay = true
 
 [connection signal="area_entered" from="Rolima/Corpo/PlayerColiisions" to="." method="_on_player_coliisions_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -26,16 +26,19 @@ const MARQUINHA = preload("res://Obj/MarcasDePneu/marca_de_pneu.tscn")
 @onready var perna_direita := $Rolima/Pernas/RodaDireita
 @onready var level := get_parent()
 var prev_perna_rot := 0.0
+@export var skid_volume_curve: Curve
 
 signal yowch(shake_amount: int)
 signal recuperou
 
 func _ready() -> void:
+	$Skid.volume_linear = 0.0
 	XSpeed = 0.0
 	InitialBoost = false
 	GameController.game_started.connect(func():
 			$AnimationPlayer.play("spawn")
 	)
+	GameController.hundred_points.connect(func(): $"100Points".play())
 
 func _physics_process(_delta: float) -> void:
 	if GameController.StartGame:
@@ -43,6 +46,8 @@ func _physics_process(_delta: float) -> void:
 			InitialBoost = true
 			XSpeed = TopXSpeed
 		HandleMovement()
+		$Skid.volume_linear = skid_volume_curve.sample(abs(prev_perna_rot))
+		$Skid.pitch_scale = 0.5 + skid_volume_curve.sample(abs(prev_perna_rot))
 		handle_marquinhas()
 
 func HandleMovement():
@@ -87,10 +92,12 @@ func _on_player_coliisions_area_entered(area: Area2D) -> void:
 	if area.is_in_group("TopArea") and not spawnando:
 		velocity.y = HitSpeed
 		XSpeed = 50.0
+		$BounceSound.play()
 
 	if area.is_in_group("BottomArea") and not spawnando:
 		velocity.y = -HitSpeed
 		XSpeed = 50.0
+		$BounceSound.play()
 
 	if area.is_in_group("Obstacle") and not invencivel:
 		XSpeed = -GameController.TopXSpeed
@@ -100,6 +107,7 @@ func _on_player_coliisions_area_entered(area: Area2D) -> void:
 			$AnimationPlayer.stop()
 			$AnimationPlayer.play("speen")
 			GameController.HP -= 1
+			$HitSound.play()
 		else:
 			yowch.emit(100)
 			InitialBoost = false
@@ -108,6 +116,8 @@ func _on_player_coliisions_area_entered(area: Area2D) -> void:
 			var morto = MORTO.instantiate()
 			morto.global_position = global_position
 			get_parent().add_child(morto)
+			$DeadSound.play()
+			$Skid.volume_linear = 0.0
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
